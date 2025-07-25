@@ -5,7 +5,7 @@ def readFile(filename: str, firstList: list[int], secondList: list[int]) -> None
             firstList.append(int(first))
             secondList.append(int(second))
 
-def getDist(firstList: list[str], secondList: list[int]) -> int:
+def getDist(firstList: list[int], secondList: list[int]) -> int:
     firstList.sort()
     secondList.sort()
     dist = 0

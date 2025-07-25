@@ -12,6 +12,7 @@ def run_program(registers: tuple[int, int, int], program: list[int]) -> str:
             return B
         elif operand == 6:
             return C
+        return 0
 
     while instruction_pointer < len(program):
         opcode = program[instruction_pointer]

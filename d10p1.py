@@ -14,7 +14,7 @@ def get_neighbors(x: int, y: int, height: int, grid: list[list[int]]) -> list[tu
             neighbors.append((nx, ny))
     return neighbors
 
-def count_score(trailhead: tuple[int] , grid: list[list[int]]) -> int:
+def count_score(trailhead: tuple[int, int], grid: list[list[int]]) -> int:
     visited = set()
     queue = deque([trailhead])
     reachable_nines = set()

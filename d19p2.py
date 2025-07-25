@@ -1,4 +1,6 @@
-def count_all_ways(design: str, patterns: set[str], memo: dict[str, int] = None) -> int:
+from typing import Optional
+
+def count_all_ways(design: str, patterns: set[str], memo: Optional[dict[str, int]] = None) -> int:
     if memo is None:
         memo = {}
     if not design:

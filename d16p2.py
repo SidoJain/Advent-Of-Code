@@ -49,7 +49,7 @@ def find_lowest_paths(grid: list[str], start: tuple[int, int], end: tuple[int, i
             new_score = score + cost
             new_path = path + [neighbor]
             heappush(pq, (new_score, neighbor, new_dir, new_path))
-    return lowest_score, paths_with_lowest_score
+    return int(lowest_score), paths_with_lowest_score
 
 def count_unique_tiles(paths: list[list[tuple[int, int]]]) -> int:
     unique_tiles = set()

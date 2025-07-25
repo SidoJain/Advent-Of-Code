@@ -9,7 +9,7 @@ def solve(raw_data: str) -> int:
     do_enabled = True
 
     do_regex = r'do\(\)'
-    dont_regex = r'don't\(\)'
+    dont_regex = r"don't\(\)"
     mul_regex = r'mul\((\d+),(\d+)\)'
 
     while raw_data:

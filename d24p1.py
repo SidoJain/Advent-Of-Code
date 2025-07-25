@@ -12,7 +12,7 @@ def parse_input(raw_input: str) -> tuple[dict[str, int], list[tuple[str, str]]]:
             gates.append((gate.strip(), output.strip()))
     return values, gates
 
-def evaluate_gate(gate: str, values: dict[str, int]) -> int:
+def evaluate_gate(gate: str, values: dict[str, int]) -> int | None:
     parts = gate.split()
     if len(parts) == 3:
         input1, operation, input2 = parts

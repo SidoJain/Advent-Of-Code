@@ -24,6 +24,6 @@ while remaining_plots:
         new_frontier = neighbours_in_same_region(*plot) & remaining_plots
         frontier |= new_frontier
         remaining_plots -= new_frontier
-    result += len(region) * sum(count_corners(*plot, region) for plot in region)
+    result += len(region) * sum(count_corners(plot[0], plot[1], region) for plot in region)
 
 print(result)

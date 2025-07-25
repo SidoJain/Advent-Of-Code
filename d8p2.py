@@ -44,14 +44,13 @@ def checkCollinear(A: tuple[int, int], B: tuple[int, int], C: tuple[int, int]) -
 
     return (y2 - y1) * (x3 - x1) == (y3 - y1) * (x2 - x1)
 
-def checkInline(antennas: list[int, int], antinodes: list[int, int]) -> list[int, int]:
+def checkInline(antennas: list[tuple[int, int, str]], antinodes: list[tuple[int, int]]) -> list[tuple[int, int]]:
     for antenna in antennas:
-        count = 0
         for i in range(len(antinodes) - 1):
             flag = True
             for j in range(i + 1, len(antinodes)):
-                if checkCollinear(antenna[:2], antinodes[i], antinodes[j]):
-                    antinodes.append(antenna[:2])
+                if checkCollinear((antenna[0], antenna[1]), antinodes[i], antinodes[j]):
+                    antinodes.append((antenna[0], antenna[1]))
                     flag = False
                     break
             if not flag:

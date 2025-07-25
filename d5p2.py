@@ -1,12 +1,12 @@
 from collections import defaultdict, deque
 
-def parse_input(input_text: str) -> tuple[list[tuple[int]], list[list[int]]]:
+def parse_input(input_text: str) -> tuple[list[tuple[int, int]], list[list[int]]]:
     parts = input_text.strip().split('\n\n')
     rules = [tuple(map(int, rule.split('|'))) for rule in parts[0].split('\n')]
     updates = [list(map(int, update.split(','))) for update in parts[1].split('\n')]
     return rules, updates
 
-def is_update_valid(update: list[list[int]], rules: list[tuple[int]]) -> bool:
+def is_update_valid(update: list[int], rules: list[tuple[int, int]]) -> bool:
     page_index = {page: idx for idx, page in enumerate(update)}
     for x, y in rules:
         if x in page_index and y in page_index:
@@ -14,11 +14,11 @@ def is_update_valid(update: list[list[int]], rules: list[tuple[int]]) -> bool:
                 return False
     return True
 
-def find_middle_page(update: list[list[int]]) -> int:
+def find_middle_page(update: list[int]) -> int:
     mid = len(update) // 2
     return update[mid]
 
-def topological_sort(pages: list[int], rules: list[tuple[int]]) -> list[int]:
+def topological_sort(pages: list[int], rules: list[tuple[int, int]]) -> list[int]:
     graph = defaultdict(list)
     in_degree = {page: 0 for page in pages}
 

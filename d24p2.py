@@ -1,3 +1,5 @@
+from typing import Callable
+
 def parse_wires(wires_raw: str) -> dict[str, int]:
     wires = {}
     for line in wires_raw.splitlines():
@@ -12,11 +14,11 @@ def parse_gates(gates_raw: str, wires: dict[str, int]) -> list[dict[str, str]]:
         a, op, b = inputs.split(' ')
         gates.append({'a': a, 'op': op, 'b': b, 'output': output})
         if a not in wires:
-            wires[a] = None
+            wires[a] = 0
         if b not in wires:
-            wires[b] = None
+            wires[b] = 0
         if output not in wires:
-            wires[output] = None
+            wires[output] = 0
     return gates
 
 def is_direct(gate: dict[str, str]) -> bool:
@@ -25,13 +27,13 @@ def is_direct(gate: dict[str, str]) -> bool:
 def is_output(gate: dict[str, str]) -> bool:
     return gate['output'].startswith('z')
 
-def is_gate(op_type: str) -> callable:
+def is_gate(op_type: str) -> Callable:
     return lambda gate: gate['op'] == op_type
 
-def has_output(output: str) -> callable:
+def has_output(output: str) -> Callable:
     return lambda gate: gate['output'] == output
 
-def has_input(input: str) -> callable:
+def has_input(input: str) -> Callable:
     return lambda gate: gate['a'] == input or gate['b'] == input
 
 def check_FAGate0s(gates: list[dict[str, str]], flags: set[str]) -> list[dict[str, str]]:

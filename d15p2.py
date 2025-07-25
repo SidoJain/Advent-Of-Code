@@ -17,6 +17,8 @@ def try_push(grid: list[list[str]], pos_x: int, pos_y: int, dx: int, dy: int) ->
     elif dy == 1 and grid[new_x][new_y] == '[':
         return try_push(grid, new_x, new_y+1, dx, dy)
 
+    return False
+
 def push(grid: list[list[str]], pos_x: int, pos_y: int, dx: int, dy: int) -> None:
     new_x = pos_x + dx
     new_y = pos_y + dy

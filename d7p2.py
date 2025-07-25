@@ -4,7 +4,7 @@ def readFile(filename: str) -> str:
     with open(filename, 'r') as f:
         return f.read()
 
-def evalExpression(numbers: list[int], operators: tuple[str]) -> int:
+def evalExpression(numbers: list[int], operators: tuple[str, ...]) -> int:
     result = numbers[0]
     for i in range(len(operators)):
         if operators[i] == '+':
@@ -15,7 +15,7 @@ def evalExpression(numbers: list[int], operators: tuple[str]) -> int:
             result = int(str(result) + str(numbers[i + 1]))
     return result
 
-def parseInput(data: str) -> list[list[int, list[int]]]:
+def parseInput(data: str) -> list[tuple[int, list[int]]]:
     equations = []
     for line in data.strip().split('\n'):
         value, numbers = line.split(':')

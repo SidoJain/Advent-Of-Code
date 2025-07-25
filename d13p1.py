@@ -1,4 +1,4 @@
-def read_file(file_path: str) -> list[tuple[int]]:
+def read_file(file_path: str) -> list[tuple[int, int, int, int, int, int]]:
     with open(file_path, 'r') as file:
         machines = []
         for machine in file.read().split('\n\n'):
@@ -15,10 +15,10 @@ def read_file(file_path: str) -> list[tuple[int]]:
 
     return machines
 
-def solve_claw_machine(machines: list[tuple[int]]) -> tuple[int]:
+def solve_claw_machine(machines: list[tuple[int, int, int, int, int, int]]) -> tuple[int, float]:
     total_tokens = 0
     prizes_won = 0
-    
+
     for machine in machines:
         A_x, A_y, B_x, B_y, P_x, P_y = machine
         min_cost = float('inf')

@@ -1,4 +1,4 @@
-def readFile(filename: str) -> str:
+def readFile(filename: str) -> list[str]:
     with open(filename) as f:
         return f.read().splitlines()
 

@@ -1,10 +1,10 @@
-def parse_input(input_data: str) -> tuple[list[list[str]], set[tuple[int]]]:
+def parse_input(input_data: str) -> tuple[list[list[str]], str]:
     lines = input_data.strip().split('\n')
     grid = [list(line) for line in lines if len(line) and line[0] == '#']
     moves = ''.join(line for line in lines if len(line) and line[0] not in '#')
     return grid, moves
 
-def find_robot_and_boxes(grid: list[list[str]]) -> tuple[tuple[int], set[tuple[int]]]:
+def find_robot_and_boxes(grid: list[list[str]]) -> tuple[tuple[int, int] | None, set[tuple[int, int]]]:
     robot_pos = None
     box_positions = set()
     for r, row in enumerate(grid):
@@ -15,7 +15,7 @@ def find_robot_and_boxes(grid: list[list[str]]) -> tuple[tuple[int], set[tuple[i
                 box_positions.add((r, c))
     return robot_pos, box_positions
 
-def move_robot(grid: list[list[str]], robot_pos: int, box_positions: set[int], direction: str) -> tuple[tuple[int], set[tuple[int]]]:
+def move_robot(grid: list[list[str]], robot_pos: tuple[int, int], box_positions: set[tuple[int, int]], direction: str) -> tuple[tuple[int, int], set[tuple[int, int]]]:
     dir_map = {'^': (-1, 0), 'v': (1, 0), '<': (0, -1), '>': (0, 1)}
     dr, dc = dir_map[direction]
     new_robot_pos = (robot_pos[0] + dr, robot_pos[1] + dc)
@@ -41,10 +41,10 @@ def move_robot(grid: list[list[str]], robot_pos: int, box_positions: set[int], d
         return new_robot_pos, box_positions
     return new_robot_pos, box_positions
 
-def calculate_gps_coordinates(box_positions: set[int]) -> int:
+def calculate_gps_coordinates(box_positions: set[tuple[int, int]]) -> int:
     return sum(100 * r + c for r, c in box_positions)
 
-def update_grid(grid: list[list[str]], robot_pos: int, box_positions: int) -> list[list[str]]:
+def update_grid(grid: list[list[str]], robot_pos: tuple[int, int], box_positions: set[tuple[int, int]]) -> list[list[str]]:
     updated_grid = [row[:] for row in grid]
     for r, row in enumerate(updated_grid):
         for c, _ in enumerate(row):

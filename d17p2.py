@@ -8,6 +8,7 @@ def simulate(reg_a: int) -> list[int]:
             return B
         elif operand == 6:
             return C
+        return 0
 
     global best
     A = reg_a

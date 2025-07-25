@@ -1,4 +1,6 @@
-def can_make_design(design: str, patterns: set[str], memo: dict[str, bool] = None) -> bool:
+from typing import Optional
+
+def can_make_design(design: str, patterns: set[str], memo: Optional[dict[str, bool]] = None) -> bool:
     if memo is None:
         memo = {}
     if not design:
