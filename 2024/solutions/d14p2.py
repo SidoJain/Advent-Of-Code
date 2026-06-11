@@ -30,7 +30,7 @@ def save_grid_as_image(grid: np.ndarray, filename: str) -> None:
     img = (grid * 255).astype(np.uint8)
     img_colored = cv2.applyColorMap(img, cv2.COLORMAP_JET)
 
-    filename = os.path.join('outputs', filename)
+    filename = os.path.join('../outputs', filename)
     cv2.imwrite(filename, img_colored)
     print(f'Image saved in {os.path.abspath(filename)}')
 
