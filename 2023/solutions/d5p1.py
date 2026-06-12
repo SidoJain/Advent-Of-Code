@@ -1,4 +1,4 @@
-def parseInput(filename: str):
+def parseInput(filename: str) -> tuple[list[int], list[list[tuple[int, int, int]]]]:
     with open(filename) as file:
         blocks = file.read().strip().split('\n\n')
 
