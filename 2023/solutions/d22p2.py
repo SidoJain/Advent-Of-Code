@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 
 def parseInput(filename: str) -> list[list[int]]:
     bricks = []
@@ -45,7 +45,7 @@ def calculateTotalChainReactions(bricks: list[list[int]]) -> int:
     total_falling_bricks = 0
     for i in range(len(bricks)):
         falling = {i}
-        queue = collections.deque(supports[i])
+        queue = deque(supports[i])
         while queue:
             candidate = queue.popleft()
             if candidate in falling:

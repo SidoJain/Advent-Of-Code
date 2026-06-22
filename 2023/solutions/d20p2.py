@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 import math
 from typing import Any
 
@@ -46,7 +46,7 @@ def calcFewestPressesForRx(modules: dict[str, dict[str, Any]]) -> int:
     presses = 0
     while True:
         presses += 1
-        queue = collections.deque([("button", "broadcaster", False)])
+        queue = deque([("button", "broadcaster", False)])
         while queue:
             src, target, pulse = queue.popleft()
             if target not in modules:
